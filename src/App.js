@@ -2,6 +2,8 @@ import React from 'react'
 import './App.css';
 import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
+import "@material-tailwind/react/tailwind.css";
+
 
 class App extends React.Component {
 
@@ -17,6 +19,9 @@ class App extends React.Component {
     .then(response => response.json())
     .then(user => this.setState({ monsters: user}))
   }
+  machine(){
+    console.log(this, 'nga yeyo')
+  }
   render() {
     const { monsters , searchfield } = this.state;
     
@@ -26,6 +31,9 @@ class App extends React.Component {
       <div className="App">
         <SearchBox placeholder="Search Monster" handleChange={ e => this.setState({ searchfield: e.target.value})} />
         <CardList monsters={filteredMonsters}/>
+        {
+          this.machine()
+        }
         
       </div>
     );
